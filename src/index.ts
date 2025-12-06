@@ -1,10 +1,10 @@
-const express = require('express');
+import express,{Request,Response} from 'express';
 const app = express();
 const port = process.env.PORT || 3003;
 
 
-app.get('/',(req,res) =>{
-    res.send('index');
+app.get('/',(req: Request,res: Response) =>{
+    res.send('trySend');
 })
 
 app.listen(port, () => {
