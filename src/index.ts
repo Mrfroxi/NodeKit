@@ -15,6 +15,12 @@ app.post('/test',(req: Request,res: Response) =>{
     res.send(body);
 })
 
+
+app.put('/test/:id',(req: Request,res: Response) =>{
+    let params  = req.params
+    res.send(body);
+})
+
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
 })
