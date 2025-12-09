@@ -4,8 +4,11 @@
   "main": "src/index.ts",
   "license": "MIT",
   "scripts": {
+    "watch": "tsc -w",
     "dev": "nodemon --inspect dist/index.js",
-    "watch": "tsc -w"
+    "jest": "jest -i",
+    "lint": "eslint --fix .",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "express": "^5.2.1"
