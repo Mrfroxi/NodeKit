@@ -14,7 +14,7 @@ export function videoValidateUpdate(reqBody:VideoUpdateDto){
         errorsMessages.push( createErrorMessage("title","title validation Error"));
     }
 
-    if(author && typeof(author) !== 'string' ){
+    if(author && typeof(author) !== 'string' || !author || author.trim().length > 20){
         errorsMessages.push( createErrorMessage("author","author validation Error"));
     }
 

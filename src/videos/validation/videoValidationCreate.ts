@@ -15,7 +15,7 @@ export function videoValidateCreate(reqBody:VideoInputDto){
         errorsMessages.push( createErrorMessage("title","title validation Error"));
     }
 
-    if( typeof(author) !== 'string' ){
+    if( typeof(author) !== 'string' || !author || author.trim().length > 20 ){
         errorsMessages.push( createErrorMessage("author","author validation Error"));
     }
 
