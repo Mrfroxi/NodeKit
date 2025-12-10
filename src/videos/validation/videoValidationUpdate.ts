@@ -36,7 +36,7 @@ export function videoValidateUpdate(reqBody:VideoUpdateDto){
     }
 
     if(canBeDownloaded && typeof(canBeDownloaded) !== 'boolean' ){
-        errorsMessages.push( createErrorMessage(canBeDownloaded,"canBeDownloaded validation Error"));
+        errorsMessages.push( createErrorMessage("canBeDownloaded","canBeDownloaded validation Error"));
     }
 
     if (typeof minAgeRestriction !== 'number' && minAgeRestriction !== null) {
