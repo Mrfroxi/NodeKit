@@ -24,12 +24,12 @@ export function videoValidateUpdate(reqBody:VideoUpdateDto){
         const existingResolutions:AvailableResolutionsDto[] = Object.values(AvailableResolutionsDto);
 
         if(availableResolutions.length > existingResolutions.length){
-            errorsMessages.push( createErrorMessage("availableResolutions2","availableResolutions validation Error"));
+            errorsMessages.push( createErrorMessage("availableResolutions","availableResolutions validation Error"));
         }
 
         for(let elem of availableResolutions){
             if(!existingResolutions.includes(elem)){
-                errorsMessages.push( createErrorMessage("availableResolutions3","availableResolutions validation Error"));
+                errorsMessages.push( createErrorMessage("availableResolutions","availableResolutions validation Error"));
                 break;
             }
         }
@@ -40,10 +40,10 @@ export function videoValidateUpdate(reqBody:VideoUpdateDto){
     }
 
     if (typeof minAgeRestriction !== 'number' && minAgeRestriction !== null) {
-        errorsMessages.push(createErrorMessage("minAgeRestriction", "minAgeRestriction validation Error"));
+        errorsMessages.push(createErrorMessage("canBeDownloaded", "minAgeRestriction validation Error"));
     } else if (typeof minAgeRestriction === 'number') {
         if (minAgeRestriction > 18 || minAgeRestriction < 1) {
-            errorsMessages.push(createErrorMessage("minAgeRestriction", "minAgeRestriction validation Error"));
+            errorsMessages.push(createErrorMessage("canBeDownloaded", "minAgeRestriction validation Error"));
         }
     }
 

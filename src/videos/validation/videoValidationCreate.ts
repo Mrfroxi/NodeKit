@@ -25,12 +25,12 @@ export function videoValidateCreate(reqBody:VideoInputDto){
         const existingResolutions:AvailableResolutionsDto[] = Object.values(AvailableResolutionsDto);
 
         if(availableResolutions.length > existingResolutions.length){
-            errorsMessages.push( createErrorMessage("availableResolutions2","availableResolutions validation Error"));
+            errorsMessages.push( createErrorMessage("availableResolutions","availableResolutions validation Error"));
         }
 
         for(let elem of availableResolutions){
             if(!existingResolutions.includes(elem)){
-                errorsMessages.push( createErrorMessage("availableResolutions3","availableResolutions validation Error"));
+                errorsMessages.push( createErrorMessage("availableResolutions","availableResolutions validation Error"));
                 break;
             }
         }
