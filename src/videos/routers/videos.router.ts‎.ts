@@ -20,7 +20,9 @@ export const videosRouter = Router();
         let errors = videoValidateCreate(ReqBody)
 
         if(errors .length > 0){
-            return  res.status(HttpStatus.BadRequest).send(errors);
+            return  res.status(HttpStatus.BadRequest).send({
+                errorsMessages : errors,
+            });
         }
 
         const VideoEntity:VideoDto = {
@@ -29,8 +31,8 @@ export const videosRouter = Router();
             author: ReqBody.author,
             canBeDownloaded: false,
             minAgeRestriction: null,
-            createdAt: `${new Date()}`,
-            publicationDate: `${new Date(new Date().setDate(new Date().getDate() + 1))}`,
+            createdAt: `${new Date().toISOString()}`,
+            publicationDate: `${new Date(new Date().setDate(new Date().getDate() + 1)).toISOString()}`,
             availableResolutions: ReqBody.availableResolutions,
         }
 
@@ -64,8 +66,10 @@ export const videosRouter = Router();
 
         const errors = videoValidateUpdate(reqBody);
 
-        if(errors .length > 0){
-            return  res.status(HttpStatus.BadRequest).send(errors);
+        if(errors.length > 0){
+            return  res.status(HttpStatus.BadRequest).send({
+                errorsMessages : errors,
+            });
         }
 
         const updatedVideo:VideoUpdateDto ={
@@ -73,7 +77,7 @@ export const videosRouter = Router();
             ...reqBody
         }
 
-        res.status(HttpStatus.Ok).send(updatedVideo)
+        res.status(HttpStatus.NoContent).send(updatedVideo)
 
     })
 
