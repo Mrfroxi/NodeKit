@@ -60,9 +60,6 @@ export const videosRouter = Router();
 
         const findVideo :VideoDto | undefined = db.videos.find(elem => elem.id === +paramId);
 
-        const findVideoIndex = db.videos.findIndex((elem) => elem.id === findVideo?.id );
-
-
         if(!findVideo){
             return res.status(HttpStatus.NotFound).send("NotFound put Error");
         }
@@ -75,12 +72,12 @@ export const videosRouter = Router();
             });
         }
 
-        const updatedVideo:VideoUpdateDto ={
-            id:findVideo.id,
-            ...reqBody
-        }
-
-        db.videos[findVideoIndex] = updatedVideo as VideoDto;
+        findVideo.title = req.body.title;
+        findVideo.author = req.body.author;
+        findVideo.canBeDownloaded = req.body.canBeDownloaded;
+        findVideo.minAgeRestriction = req.body.minAgeRestriction;
+        findVideo.publicationDate = req.body.publicationDate;
+        findVideo.availableResolutions = req.body.availableResolutions;
 
         res.status(HttpStatus.NoContent).end();
 

@@ -11,15 +11,15 @@ export function videoValidateCreate(reqBody:VideoInputDto){
     let  {title,author,availableResolutions}:VideoInputDto = reqBody;
 
     if( typeof(title) !== 'string' ){
-        errorsMessages.push( createErrorMessage(`${title}`,"title validation Error"));
+        errorsMessages.push( createErrorMessage("title","title validation Error"));
     }
 
     if( typeof(author) !== 'string' ){
-        errorsMessages.push( createErrorMessage(`${author}`,"author validation Error"));
+        errorsMessages.push( createErrorMessage("author","author validation Error"));
     }
 
     if(!Array.isArray(availableResolutions)){
-        errorsMessages.push( createErrorMessage(`${availableResolutions}`,"availableResolutions validation Error"));
+        errorsMessages.push( createErrorMessage("availableResolutions","availableResolutions validation Error"));
     }else if(availableResolutions.length){
         const existingResolutions:AvailableResolutionsDto[] = Object.values(AvailableResolutionsDto);
 

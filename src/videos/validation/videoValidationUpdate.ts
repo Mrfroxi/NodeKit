@@ -11,11 +11,11 @@ export function videoValidateUpdate(reqBody:VideoUpdateDto){
     let  {title,author,availableResolutions,canBeDownloaded,minAgeRestriction,publicationDate}:VideoUpdateDto = reqBody;
 
     if(title && typeof(title) !== 'string' ){
-        errorsMessages.push( createErrorMessage(`${title}`,"title validation Error"));
+        errorsMessages.push( createErrorMessage("title","title validation Error"));
     }
 
     if(author && typeof(author) !== 'string' ){
-        errorsMessages.push( createErrorMessage(`${author}`,"author validation Error"));
+        errorsMessages.push( createErrorMessage("author","author validation Error"));
     }
 
     if(!Array.isArray(availableResolutions)){
@@ -40,16 +40,16 @@ export function videoValidateUpdate(reqBody:VideoUpdateDto){
     }
 
     if (typeof minAgeRestriction !== 'number' && minAgeRestriction !== null) {
-        errorsMessages.push(createErrorMessage(`${minAgeRestriction}`, "minAgeRestriction validation Error"));
+        errorsMessages.push(createErrorMessage("minAgeRestriction", "minAgeRestriction validation Error"));
     } else if (typeof minAgeRestriction === 'number') {
         if (minAgeRestriction > 18 || minAgeRestriction < 1) {
-            errorsMessages.push(createErrorMessage(`${minAgeRestriction}`, "minAgeRestriction validation Error"));
+            errorsMessages.push(createErrorMessage("minAgeRestriction", "minAgeRestriction validation Error"));
         }
     }
 
 
     if(publicationDate && typeof(publicationDate) !== 'string' ){
-        errorsMessages.push( createErrorMessage(publicationDate,"publicationDate validation Error"));
+        errorsMessages.push( createErrorMessage("publicationDate","publicationDate validation Error"));
     }
 
 
