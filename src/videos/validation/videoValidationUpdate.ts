@@ -40,10 +40,10 @@ export function videoValidateUpdate(reqBody:VideoUpdateDto){
     }
 
     if (typeof minAgeRestriction !== 'number' && minAgeRestriction !== null) {
-        errorsMessages.push(createErrorMessage("canBeDownloaded", "minAgeRestriction validation Error"));
+        errorsMessages.push(createErrorMessage("minAgeRestriction", "minAgeRestriction validation Error"));
     } else if (typeof minAgeRestriction === 'number') {
         if (minAgeRestriction > 18 || minAgeRestriction < 1) {
-            errorsMessages.push(createErrorMessage("canBeDownloaded", "minAgeRestriction validation Error"));
+            errorsMessages.push(createErrorMessage("minAgeRestriction", "minAgeRestriction validation Error"));
         }
     }
 
