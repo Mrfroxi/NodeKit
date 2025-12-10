@@ -10,7 +10,8 @@ export function videoValidateCreate(reqBody:VideoInputDto){
 
     let  {title,author,availableResolutions}:VideoInputDto = reqBody;
 
-    if( typeof(title) !== 'string' ){
+    if( typeof(title) !== 'string' || !title.trim().length || title.trim().length > 40 ){
+
         errorsMessages.push( createErrorMessage("title","title validation Error"));
     }
 

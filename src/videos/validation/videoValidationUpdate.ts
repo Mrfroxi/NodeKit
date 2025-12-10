@@ -10,7 +10,7 @@ export function videoValidateUpdate(reqBody:VideoUpdateDto){
 
     let  {title,author,availableResolutions,canBeDownloaded,minAgeRestriction,publicationDate}:VideoUpdateDto = reqBody;
 
-    if(title && typeof(title) !== 'string' ){
+    if(typeof(title) !== 'string' || !title.trim().length || title.trim().length > 40 ){
         errorsMessages.push( createErrorMessage("title","title validation Error"));
     }
 
