@@ -60,6 +60,9 @@ export const videosRouter = Router();
 
         const findVideo :VideoDto | undefined = db.videos.find(elem => elem.id === +paramId);
 
+        const findVideoIndex = db.videos.findIndex((elem) => elem.id === findVideo?.id );
+
+
         if(!findVideo){
             return res.status(HttpStatus.NotFound).send("NotFound put Error");
         }
@@ -77,7 +80,9 @@ export const videosRouter = Router();
             ...reqBody
         }
 
-        res.status(HttpStatus.NoContent).send(updatedVideo)
+        db.videos[findVideoIndex] = updatedVideo as VideoDto;
+
+        res.status(HttpStatus.NoContent).end();
 
     })
 
